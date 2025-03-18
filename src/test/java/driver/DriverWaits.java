@@ -1,0 +1,24 @@
+package driver;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+public class DriverWaits {
+
+    private static final int WAIT_TIMEOUT_SECONDS = 10;
+
+    private static final ThreadLocal<WebDriverWait> waiter = ThreadLocal.withInitial(() ->
+            new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(WAIT_TIMEOUT_SECONDS)));
+
+    public static WebElement waitElementToBeClickable(WebElement element) {
+        return waiter.get().until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public static WebElement waitVisibilityOf(WebElement element) {
+        return waiter.get().until(ExpectedConditions.visibilityOf(element));
+    }
+
+}
