@@ -13,7 +13,7 @@
 3. Enter the email and click "Next" button.
 4. Enter the password and click "Next" button.
 5. Search for "Java Testing with Selenium Course".
-6. Click on the second video in the search results.
+6. Click on the first video in the search results.
 7. Pause the Video.
 8. Click "Like" button and verify button pressed status. 
 9. Click "Subscribe" button and verify subscription text.

@@ -1,5 +1,6 @@
 package driver;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,6 +20,10 @@ public class DriverWaits {
 
     public static WebElement waitVisibilityOf(WebElement element) {
         return waiter.get().until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public static WebElement waitVisibilityOfElementLocated(By elementBy) {
+        return waiter.get().until(ExpectedConditions.visibilityOfElementLocated(elementBy));
     }
 
 }

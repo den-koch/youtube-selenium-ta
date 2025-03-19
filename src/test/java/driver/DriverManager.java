@@ -5,7 +5,8 @@ import driver.browser.ChromeBrowserManager;
 import driver.browser.EdgeBrowserManager;
 import driver.browser.FirefoxBrowserManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ThreadGuard;
+
+import java.time.Duration;
 
 public class DriverManager {
 
@@ -15,21 +16,22 @@ public class DriverManager {
     }
 
     public static WebDriver getDriver() {
-        if (driver.get() == null) {
+        WebDriver webDriver = driver.get();
+        if (webDriver == null) {
             BrowserType browserType = BrowserType.valueOf(
                     System.getProperty("browser", "chrome").toUpperCase());
 
-            driver.set(
-                    ThreadGuard.protect(
-                            switch (browserType) {
-                                case FIREFOX -> FirefoxBrowserManager.createDriver();
-                                case EDGE -> EdgeBrowserManager.createDriver();
-                                default -> ChromeBrowserManager.createDriver();
-                            })
-            );
-            driver.get().manage().window().maximize();
+            webDriver = switch (browserType) {
+                case FIREFOX -> FirefoxBrowserManager.createDriver();
+                case EDGE -> EdgeBrowserManager.createDriver();
+                default -> ChromeBrowserManager.createDriver();
+            };
+            webDriver.manage().window().maximize();
+            webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+
+            driver.set(webDriver);
         }
-        return driver.get();
+        return webDriver;
     }
 
     public static void closeDriver() {
