@@ -1,4 +1,4 @@
-package pages.youtube;
+package pages.youtube.menu;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 import pages.google.GoogleLoginPage;
+import pages.youtube.main.YoutubeSearchResultsPage;
 
 
 public class YoutubeTopMenuPage extends BasePage {

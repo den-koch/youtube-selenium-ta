@@ -1,4 +1,4 @@
-package pages.youtube;
+package pages.youtube.main;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -21,6 +21,9 @@ public class YoutubeVideoPage extends BasePage {
 
     @FindBy(css = "#upload-info a")
     private WebElement channelLink;
+
+    @FindBy(id = "leading-section")
+    private WebElement commentsSection;
 
     public YoutubeVideoPage(WebDriver driver) {
         super(driver);
@@ -87,9 +90,9 @@ public class YoutubeVideoPage extends BasePage {
         return new YoutubeChannelPage(driver);
     }
 
-    public YoutubeChannelPage openChannelPage() {
-        clickElement(channelLink);
-        return new YoutubeChannelPage(driver);
+    public YoutubeVideoCommentsPage scrollToCommentsSection(){
+        scrollToElement(commentsSection);
+        return new YoutubeVideoCommentsPage(driver);
     }
 
 }

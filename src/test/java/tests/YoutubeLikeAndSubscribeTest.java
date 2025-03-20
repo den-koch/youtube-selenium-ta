@@ -1,12 +1,11 @@
 package tests;
 
-import driver.DriverManager;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.youtube.YoutubeChannelPage;
-import pages.youtube.YoutubeTopMenuPage;
-import pages.youtube.YoutubeVideoPage;
+import pages.youtube.main.YoutubeChannelPage;
+import pages.youtube.menu.YoutubeTopMenuPage;
+import pages.youtube.main.YoutubeVideoPage;
 
 public class YoutubeLikeAndSubscribeTest extends BaseTest {
 
