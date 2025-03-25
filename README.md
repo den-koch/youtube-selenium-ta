@@ -45,6 +45,18 @@
 9. Verify the video duration.
 10. Verify the video upload date.
 
+## Test Run
+
+To execute regular tests in the project, use the following command:
+``` sh
+mvn clean test -Denv={dev,qa} -Dbrowser={browser} -DxmlFilePath="src/test/resources/{testng_smoke,testng_regression}.xml"
+```
+
+**Supported browsers:**
+- Edge
+- Firefox
+- Chrome (*default*)
+
 ## Acceptance criteria
 - The scenarios are linear (no need to implement complex logic for now). 3 scenarios in total.
 - Different locator strategies are used for a task.

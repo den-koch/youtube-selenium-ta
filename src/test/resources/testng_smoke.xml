@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Youtube Smoke Test Suite">
+    <parameter name="youtubeUrl" value="https://www.youtube.com/"/>
+    <test name="Smoke Test">
+        <classes>
+            <class name="tests.SearchAndFilterTest">
+                <methods>
+                    <include name="testSearchRequestMatch"/>
+                </methods>
+            </class>
+            <class name="tests.YoutubeLikeAndSubscribeTest">
+                <methods>
+                    <exclude name="testSubscribeButtonOnChannelPage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
