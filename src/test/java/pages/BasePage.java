@@ -7,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.Set;
-import java.util.TreeSet;
 
 public abstract class BasePage {
 

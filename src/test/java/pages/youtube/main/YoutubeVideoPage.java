@@ -1,10 +1,12 @@
 package pages.youtube.main;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
+@Slf4j
 public class YoutubeVideoPage extends BasePage {
 
     @FindBy(xpath = "//*[@id='movie_player']/descendant::button[contains(@class, 'ytp-play-button')]")
@@ -32,12 +34,14 @@ public class YoutubeVideoPage extends BasePage {
     @Override
     public YoutubeVideoPage openPage(String URL) {
         driver.get(URL);
+        log.info("Opening Youtube video page");
         return this;
     }
 
     public YoutubeVideoPage pauseVideo() {
         if (!isVideoPaused()) {
             clickElement(playButton);
+            log.info("Clicked video pause button");
         }
         return this;
     }
@@ -45,6 +49,7 @@ public class YoutubeVideoPage extends BasePage {
     public YoutubeVideoPage clickLikeVideo() {
         if (!isVideoLiked()) {
             clickElement(likeButton);
+            log.info("Clicked video like button");
         }
         return this;
     }
@@ -53,6 +58,7 @@ public class YoutubeVideoPage extends BasePage {
     public YoutubeVideoPage clickSubscribe() {
         if (isSubscribed()) {
             clickElement(subscribeButton);
+            log.info("Clicked channel subscribe button");
         }
         return this;
     }
@@ -64,18 +70,22 @@ public class YoutubeVideoPage extends BasePage {
         } else {
             buttonText = getTextFromElement(subscribedButton);
         }
+        log.info("Got text from Subscribe button");
         return buttonText;
     }
 
     public boolean isVideoLiked() {
+        log.info("Checking if video is liked");
         return Boolean.parseBoolean(likeButton.getDomAttribute("aria-pressed"));
     }
 
     public boolean isSubscribed() {
+        log.info("Checking if channel is subscribed on");
         return subscribeButton.isDisplayed();
     }
 
     public boolean isVideoPaused() {
+        log.info("Checking if video is paused");
         String playerReverseStatus = playButton.getDomAttribute("data-title-no-tooltip");
         return playerReverseStatus.equals("Play");
     }
@@ -87,6 +97,7 @@ public class YoutubeVideoPage extends BasePage {
                 .keyUp(Keys.CONTROL)
                 .build()
                 .perform();
+        log.info("Opening Youtube channel page in new tab");
         return new YoutubeChannelPage(driver);
     }
 
