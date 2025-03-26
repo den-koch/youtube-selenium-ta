@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Youtube Smoke Test Suite">
+<suite name="Youtube Smoke Test Suite" parallel="methods" thread-count="3">
     <parameter name="youtubeUrl" value="https://www.youtube.com/"/>
     <test name="Smoke Test">
         <classes>

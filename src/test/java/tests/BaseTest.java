@@ -15,7 +15,7 @@ import utils.TestListener;
 @Listeners({TestListener.class})
 public class BaseTest {
 
-    protected WebDriver driver;
+    protected ThreadLocal<WebDriver> driver;
 
     @BeforeMethod(groups = "setup")
     public void setUp() {

@@ -19,7 +19,7 @@ public class DriverManager {
     private DriverManager() {
     }
 
-    public static WebDriver getDriver() {
+    public static ThreadLocal<WebDriver> getDriver() {
         WebDriver webDriver = driver.get();
         if (webDriver == null) {
             BrowserType browserType = BrowserType.valueOf(
@@ -37,7 +37,7 @@ public class DriverManager {
 
             driver.set(webDriver);
         }
-        return webDriver;
+        return driver;
     }
 
     public static void closeDriver() {

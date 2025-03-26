@@ -24,7 +24,7 @@ public class YoutubeLikeAndSubscribeTest extends BaseTest {
         searchTestData = SearchTestDataService.getTestDataFromProperties();
         UserTestData userTestData = UserTestDataService.getTestDataFromProperties();
 
-        new YoutubeTopMenuPage(driver)
+        new YoutubeTopMenuPage(driver.get())
                 .openPage(youtubeUrl)
                 .clickSingInButton()
                 .enterEmail(userTestData.getEmail())
@@ -40,7 +40,7 @@ public class YoutubeLikeAndSubscribeTest extends BaseTest {
         String searchRequest = searchTestData.getSearchRequest();
         Integer videoPosition = searchTestData.getVideoPosition();
 
-        YoutubeVideoPage videoPage = new YoutubeTopMenuPage(driver)
+        YoutubeVideoPage videoPage = new YoutubeTopMenuPage(driver.get())
                 .enterSearchText(searchRequest)
                 .searchSubmit()
                 .clickVideo(videoPosition);
@@ -60,7 +60,7 @@ public class YoutubeLikeAndSubscribeTest extends BaseTest {
         String searchRequest = searchTestData.getSearchRequest();
         Integer videoPosition = searchTestData.getVideoPosition();
 
-        YoutubeVideoPage videoPage = new YoutubeTopMenuPage(driver)
+        YoutubeVideoPage videoPage = new YoutubeTopMenuPage(driver.get())
                 .enterSearchText(searchRequest)
                 .searchSubmit()
                 .clickVideo(videoPosition);
@@ -79,7 +79,7 @@ public class YoutubeLikeAndSubscribeTest extends BaseTest {
         String searchRequest = searchTestData.getSearchRequest();
         Integer videoPosition = searchTestData.getVideoPosition();
 
-        YoutubeVideoPage videoPage = new YoutubeTopMenuPage(driver)
+        YoutubeVideoPage videoPage = new YoutubeTopMenuPage(driver.get())
                 .enterSearchText(searchRequest)
                 .searchSubmit()
                 .clickVideo(videoPosition);
@@ -101,7 +101,7 @@ public class YoutubeLikeAndSubscribeTest extends BaseTest {
         String searchRequest = searchTestData.getSearchRequest();
         Integer videoPosition = searchTestData.getVideoPosition();
 
-        YoutubeVideoPage videoPage = new YoutubeTopMenuPage(driver)
+        YoutubeVideoPage videoPage = new YoutubeTopMenuPage(driver.get())
                 .enterSearchText(searchRequest)
                 .searchSubmit()
                 .clickVideo(videoPosition);

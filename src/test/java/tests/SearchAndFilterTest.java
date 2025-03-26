@@ -19,7 +19,7 @@ public class SearchAndFilterTest extends BaseTest {
     @Parameters("youtubeUrl")
     public void setUpTest(String youtubeUrl) {
         searchTestData = SearchTestDataService.getTestDataFromProperties();
-        new YoutubeTopMenuPage(driver)
+        new YoutubeTopMenuPage(driver.get())
                 .openPage(youtubeUrl);
     }
 
@@ -29,7 +29,7 @@ public class SearchAndFilterTest extends BaseTest {
 
         String expectedSearchRequest = searchTestData.getSearchRequest();
 
-        YoutubeSearchResultsPage searchResultsPage = new YoutubeTopMenuPage(driver)
+        YoutubeSearchResultsPage searchResultsPage = new YoutubeTopMenuPage(driver.get())
                 .enterSearchText(expectedSearchRequest)
                 .searchSubmit();
 
