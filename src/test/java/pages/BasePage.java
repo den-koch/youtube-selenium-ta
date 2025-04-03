@@ -22,6 +22,11 @@ public abstract class BasePage {
 
     protected abstract BasePage openPage(String URL);
 
+    protected void scrollToElement(WebElement element) {
+        DriverWaits.waitVisibilityOf(element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+    }
+
     public String getPageTitle() {
         return driver.getTitle();
     }
