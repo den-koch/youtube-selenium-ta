@@ -22,29 +22,6 @@ public abstract class BasePage {
 
     protected abstract BasePage openPage(String URL);
 
-    protected void clickElement(WebElement element) {
-        DriverWaits.waitElementToBeClickable(element)
-                .click();
-    }
-
-    protected void enterText(WebElement element, String text) {
-        DriverWaits.waitElementToBeClickable(element)
-                .sendKeys(text);
-    }
-
-    protected String getTextFromElement(WebElement element) {
-        return DriverWaits.waitVisibilityOf(element).getText();
-    }
-
-    protected void scrollToElement(WebElement element) {
-        DriverWaits.waitVisibilityOf(element);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
-    }
-
-    protected void waitPageToLoad(WebElement element) {
-        DriverWaits.waitVisibilityOf(element);
-    }
-
     public String getPageTitle() {
         return driver.getTitle();
     }
