@@ -1,7 +1,9 @@
 package decorator.elements;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 
+@Slf4j
 public class Input extends Element {
 
     public Input(WebElement webElement) {
@@ -11,5 +13,6 @@ public class Input extends Element {
     public void enterText(String text) {
         waitElementToBeClickable();
         webElement.sendKeys(text);
+        log.info("Entered text is: {}", text);
     }
 }
