@@ -1,6 +1,6 @@
 package decorator;
 
-import decorator.elements.IElement;
+import decorator.elements.base.IElement;
 import decorator.utils.LocatingCustomElementListHandler;
 import decorator.utils.WrapperFactory;
 import org.openqa.selenium.SearchContext;
