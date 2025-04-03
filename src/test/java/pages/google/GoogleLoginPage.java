@@ -1,5 +1,7 @@
 package pages.google;
 
+import decorator.elements.Button;
+import decorator.elements.Input;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,16 +12,16 @@ import pages.BasePage;
 public class GoogleLoginPage extends BasePage {
 
     @FindBy(css = "#identifierId")
-    private WebElement emailInput;
+    private Input emailInput;
 
     @FindBy(css = "#password input")
-    private WebElement passwordInput;
+    private Input passwordInput;
 
     @FindBy(css = "#identifierNext button")
-    private WebElement emailNextButton;
+    private Button emailNextButton;
 
     @FindBy(css = "#passwordNext button")
-    private WebElement passwordNextButton;
+    private Button passwordNextButton;
 
     public GoogleLoginPage(WebDriver driver) {
         super(driver);
@@ -33,25 +35,25 @@ public class GoogleLoginPage extends BasePage {
     }
 
     public GoogleLoginPage enterEmail(String email){
-        enterText(emailInput, email);
+        emailInput.enterText(email);
         log.info("Filled user email input");
         return this;
     }
 
     public GoogleLoginPage enterPassword(String password){
-        enterText(passwordInput, password);
+        passwordInput.enterText(password);
         log.info("Filled user password input");
         return this;
     }
 
     public GoogleLoginPage clickEmailNextButton(){
-        clickElement(emailNextButton);
+        emailNextButton.click();
         log.info("Clicked next button on email page");
         return this;
     }
 
     public GoogleLoginPage clickPasswordNextButton(){
-        clickElement(passwordNextButton);
+        passwordNextButton.click();
         log.info("Clicked next button on password page");
         return this;
     }

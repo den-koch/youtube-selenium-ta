@@ -1,5 +1,6 @@
 package pages;
 
+import decorator.CustomFieldDecorator;
 import driver.DriverWaits;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,9 @@ public abstract class BasePage {
 
     protected BasePage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+
+//        PageFactory.initElements(driver, this);
+        PageFactory.initElements(new CustomFieldDecorator(driver), this);
     }
 
     protected abstract BasePage openPage(String URL);
@@ -38,17 +41,17 @@ public abstract class BasePage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    protected void waitPageToLoad(WebElement element){
+    protected void waitPageToLoad(WebElement element) {
         DriverWaits.waitVisibilityOf(element);
     }
 
-    public String getPageTitle(){
+    public String getPageTitle() {
         return driver.getTitle();
     }
 
     public void switchToNewTab() {
         Set<String> tabs = driver.getWindowHandles();
-        driver.switchTo().window( (String) tabs.toArray()[1]);
+        driver.switchTo().window((String) tabs.toArray()[1]);
     }
 
 }

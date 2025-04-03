@@ -1,5 +1,7 @@
 package pages.youtube.main;
 
+import decorator.elements.Button;
+import decorator.elements.VideoCard;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,15 +14,16 @@ import java.util.List;
 public class YoutubeSearchResultsPage extends BasePage {
 
     @FindBy(css = "#filter-button button")
-    private WebElement filterButton;
+    private Button filterButton;
 
 //    @FindBy(xpath = "//div[@id='dismissible']/descendant::a[@id='thumbnail']")
     @FindBy(xpath = "//ytd-video-renderer/descendant::a[@id='thumbnail']")
-    private List<WebElement> videoElements;
+    private List<VideoCard> videoElements;
 
     public YoutubeSearchResultsPage(WebDriver driver) {
         super(driver);
-        waitPageToLoad(filterButton);
+//        waitPageToLoad(filterButton);
+        filterButton.waitElementToBeVisible();
     }
 
     @Override
@@ -31,7 +34,7 @@ public class YoutubeSearchResultsPage extends BasePage {
     }
 
     public YoutubeVideoPage clickVideo(int index) {
-        clickElement(videoElements.get(index));
+        videoElements.get(index).click();
         log.info("Clicked video by position in list");
         return new YoutubeVideoPage(driver);
     }

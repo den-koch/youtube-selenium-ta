@@ -1,5 +1,7 @@
 package pages.youtube.menu;
 
+import decorator.elements.Button;
+import decorator.elements.Input;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -15,10 +17,10 @@ import pages.youtube.main.YoutubeSearchResultsPage;
 public class YoutubeTopMenuPage extends BasePage {
 
     @FindBy(xpath = "//div[@id='buttons']/descendant::a[contains(@href, 'ServiceLogin')]")
-    private WebElement googleSignInButton;
+    private Button googleSignInButton;
 
     @FindBy(css = "#center input")
-    private WebElement searchInput;
+    private Input searchInput;
 
     public YoutubeTopMenuPage(WebDriver driver) {
         super(driver);
@@ -32,20 +34,20 @@ public class YoutubeTopMenuPage extends BasePage {
     }
 
     public GoogleLoginPage clickSingInButton(){
-        clickElement(googleSignInButton);
+        googleSignInButton.click();
         log.info("Clicked Google SignIn button");
         return new GoogleLoginPage(driver);
     }
 
     public YoutubeTopMenuPage enterSearchText(String searchText){
-        enterText(searchInput, searchText);
+        searchInput.enterText(searchText);
         log.info("Filled search text input");
         return this;
     }
 
     public YoutubeSearchResultsPage searchSubmit(){
         Actions action = new Actions(driver);
-        action.sendKeys(searchInput, Keys.ENTER);
+        action.sendKeys(searchInput.getWrappedElement(), Keys.ENTER);
         action.perform();
 
         log.info("Search request submitted");
