@@ -1,6 +1,6 @@
 package decorator.utils;
 
-import decorator.elements.IElement;
+import decorator.elements.base.IElement;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.pagefactory.ElementLocator;
 

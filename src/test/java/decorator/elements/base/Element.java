@@ -1,8 +1,6 @@
-package decorator.elements;
+package decorator.elements.base;
 
 import driver.DriverWaits;
-import lombok.extern.slf4j.Slf4j;
-import org.jspecify.annotations.NullMarked;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WrapsElement;
 
