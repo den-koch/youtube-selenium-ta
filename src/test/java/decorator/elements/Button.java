@@ -1,8 +1,10 @@
 package decorator.elements;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 
-public class Button extends Element { // implements WrapsElement
+@Slf4j
+public class Button extends Element {
 
     public Button(WebElement webElement) {
         super(webElement);
@@ -11,6 +13,14 @@ public class Button extends Element { // implements WrapsElement
     public void click() {
         waitElementToBeClickable();
         webElement.click();
+        log.info("Button clicked!");
+    }
+
+    public String getText() {
+        waitElementToBeVisible();
+        String text = webElement.getText();
+        log.info("Got the button text: {}", text);
+        return text;
     }
 
 }
