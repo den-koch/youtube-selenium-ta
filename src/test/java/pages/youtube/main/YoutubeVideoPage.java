@@ -1,5 +1,6 @@
 package pages.youtube.main;
 
+import decorator.elements.Button;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -10,16 +11,16 @@ import pages.BasePage;
 public class YoutubeVideoPage extends BasePage {
 
     @FindBy(xpath = "//*[@id='movie_player']/descendant::button[contains(@class, 'ytp-play-button')]")
-    private WebElement playButton;
+    private Button playButton;
 
     @FindBy(xpath = "(//like-button-view-model/descendant::button)[1]")
-    private WebElement likeButton;
+    private Button likeButton;
 
     @FindBy(css = "#subscribe-button-shape button")
-    private WebElement subscribeButton;
+    private Button subscribeButton;
 
     @FindBy(css = "#notification-preference-button button")
-    private WebElement subscribedButton;
+    private Button subscribedButton;
 
     @FindBy(css = "#upload-info a")
     private WebElement channelLink;
@@ -40,7 +41,7 @@ public class YoutubeVideoPage extends BasePage {
 
     public YoutubeVideoPage pauseVideo() {
         if (!isVideoPaused()) {
-            clickElement(playButton);
+            playButton.click();
             log.info("Clicked video pause button");
         }
         return this;
@@ -48,7 +49,7 @@ public class YoutubeVideoPage extends BasePage {
 
     public YoutubeVideoPage clickLikeVideo() {
         if (!isVideoLiked()) {
-            clickElement(likeButton);
+            likeButton.click();
             log.info("Clicked video like button");
         }
         return this;
@@ -57,7 +58,7 @@ public class YoutubeVideoPage extends BasePage {
     //    How To Handle Animation?
     public YoutubeVideoPage clickSubscribe() {
         if (isSubscribed()) {
-            clickElement(subscribeButton);
+            subscribeButton.click();
             log.info("Clicked channel subscribe button");
         }
         return this;
@@ -66,9 +67,9 @@ public class YoutubeVideoPage extends BasePage {
     public String getSubscribeButtonText() {
         String buttonText;
         if (isSubscribed()) {
-            buttonText = getTextFromElement(subscribeButton);
+            buttonText = subscribeButton.getText();
         } else {
-            buttonText = getTextFromElement(subscribedButton);
+            buttonText = subscribedButton.getText();
         }
         log.info("Got text from Subscribe button");
         return buttonText;
@@ -101,9 +102,9 @@ public class YoutubeVideoPage extends BasePage {
         return new YoutubeChannelPage(driver);
     }
 
-    public YoutubeVideoCommentsPage scrollToCommentsSection(){
-        scrollToElement(commentsSection);
-        return new YoutubeVideoCommentsPage(driver);
-    }
+//    public YoutubeVideoCommentsPage scrollToCommentsSection(){
+//        scrollToElement(commentsSection);
+//        return new YoutubeVideoCommentsPage(driver);
+//    }
 
 }

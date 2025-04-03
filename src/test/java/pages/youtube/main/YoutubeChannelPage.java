@@ -1,5 +1,6 @@
 package pages.youtube.main;
 
+import decorator.elements.Button;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +12,7 @@ import pages.BasePage;
 public class YoutubeChannelPage extends BasePage {
 
     @FindBy(xpath = "//div[@id='page-header']//*[contains(@class, 'subscribe-button')]/descendant::button")
-    private WebElement subscribeButton;
+    private Button subscribeButton;
 
     public YoutubeChannelPage(WebDriver driver) {
         super(driver);
@@ -26,7 +27,7 @@ public class YoutubeChannelPage extends BasePage {
 
     public String getSubscribeButtonText() {
         log.info("Got text from Subscribe button");
-        return getTextFromElement(subscribeButton);
+        return subscribeButton.getText();
     }
 }
 
