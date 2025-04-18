@@ -53,10 +53,14 @@ mvn clean test -Denv={dev,qa} -Dbrowser={browser} -DxmlFilePath="src/test/resour
 ```
 
 **Supported browsers:**
-- Edge
-- Firefox
-- Chrome (*default*)
-
+- Local (format: {browser}_local)
+  - Edge 
+  - Firefox 
+  - Chrome (*default*)
+- Remote (Docker Grid) (format: {browser}_remote)
+  - Firefox
+  - Chrome (*default*)
+    
 ## Acceptance criteria
 - The scenarios are linear (no need to implement complex logic for now). 3 scenarios in total.
 - Different locator strategies are used for a task.
