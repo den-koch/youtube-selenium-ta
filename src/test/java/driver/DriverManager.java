@@ -1,9 +1,7 @@
 package driver;
 
-import driver.browser.BrowserType;
-import driver.browser.ChromeBrowserManager;
-import driver.browser.EdgeBrowserManager;
-import driver.browser.FirefoxBrowserManager;
+import driver.browser.local.LocalBrowserManager;
+import driver.browser.remote.RemoteBrowserManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import utils.DriverEventListener;
@@ -19,17 +17,18 @@ public class DriverManager {
     private DriverManager() {
     }
 
-    public static ThreadLocal<WebDriver> getDriver() {
+    public static ThreadLocal<WebDriver> getDriver(){
         WebDriver webDriver = driver.get();
         if (webDriver == null) {
-            BrowserType browserType = BrowserType.valueOf(
-                    System.getProperty("browser", "chrome").toUpperCase());
+            String browserType = System.getProperty("browser", "chrome_local");
 
-            webDriver = switch (browserType) {
-                case FIREFOX -> FirefoxBrowserManager.createDriver();
-                case EDGE -> EdgeBrowserManager.createDriver();
-                default -> ChromeBrowserManager.createDriver();
-            };
+            if (browserType.endsWith("_local")) {
+                webDriver = LocalBrowserManager.createDriver(browserType);
+            }
+            else if (browserType.endsWith("_remote")) {
+                webDriver = RemoteBrowserManager.createDriver(browserType);
+            }
+
             webDriver.manage().window().maximize();
             webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICIT_WAIT_TIMEOUT_SECONDS));
 
