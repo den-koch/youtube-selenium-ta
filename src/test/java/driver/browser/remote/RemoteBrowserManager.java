@@ -7,7 +7,7 @@ import java.net.MalformedURLException;
 
 public class RemoteBrowserManager {
 
-    private static final String GRID_URL = "http://localhost:4444/wd/hub";
+    private static final String GRID_URL = "http://selenium-hub:4444/wd/hub";
 
     public static WebDriver createDriver(String browser) {
         try {

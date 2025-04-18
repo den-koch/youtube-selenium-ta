@@ -22,6 +22,7 @@ public class ChromeRemoteBrowserManager {
         chromeOptions.addArguments("--disable-dev-shm-usage");
         chromeOptions.addArguments("--no-sandbox");
         chromeOptions.addArguments("--disable-popup-blocking");
+        chromeOptions.addArguments("--headless=new");
         return chromeOptions;
     }
 }
