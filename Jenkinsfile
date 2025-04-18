@@ -6,7 +6,6 @@ pipeline{
         choice(name: 'BROWSER', choices: ['edge','chrome','firefox'], description: '')
         choice(name: 'SUITE', choices: ['testng_smoke.xml','testng_regression.xml'], description: '')
     }
-    {testng_smoke,testng_regression}.xml
 
     stages{
         stage ('Test'){
