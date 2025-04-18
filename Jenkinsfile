@@ -11,7 +11,9 @@ pipeline{
 
     stages{
         stage ('Test'){
-            sh 'mvn clean test -Denv=${params.ENV} -Dbrowser=${params.BROWSER} -DxmlFilePath="src/test/resources/${params.SUITE}"'
+            steps{
+                sh 'mvn clean test -Denv=${params.ENV} -Dbrowser=${params.BROWSER} -DxmlFilePath="src/test/resources/${params.SUITE}"'
+            }
         }
     }
 }
