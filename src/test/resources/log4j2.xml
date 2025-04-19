@@ -6,8 +6,7 @@
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level: %msg%n%throwable"/>
         </Console>
         <!-- File Appender with daily rolling -->
-        <RollingFile name="FileLogger" fileName="./target/logs/test.log"
-                     filePattern="./target/logs/test-%d{yyyy-MM-dd}.log">
+        <RollingFile name="FileLogger" filePattern="./target/logs/test-%d{yyyy-MM-dd}.log">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level: %msg%n%throwable"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
