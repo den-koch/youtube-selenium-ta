@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Appenders>
-        <!-- Console Appender -->
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level: %msg%n%throwable"/>
         </Console>
-        <!-- File Appender with daily rolling -->
         <RollingFile name="FileLogger" filePattern="./target/logs/test-%d{yyyy-MM-dd}.log">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level: %msg%n%throwable"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
             </Policies>
         </RollingFile>
+        <ReportPortalLog4j2Appender name="ReportPortalAppender">
+            <PatternLayout pattern="[%d{HH:mm:ss}] %-5p (%F:%L) - %m%n"/>
+        </ReportPortalLog4j2Appender>
     </Appenders>
 
-    <!-- Logger Declaration -->
     <Loggers>
-        <!-- Root Logger Level -->
-        <Root level="info">
+        <Root level="INFO">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="FileLogger"/>
+            <AppenderRef ref="ReportPortalAppender"/>
         </Root>
     </Loggers>
 </Configuration>
