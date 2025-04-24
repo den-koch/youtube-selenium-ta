@@ -1,7 +1,8 @@
 pipeline{
-    agent {
-        label 'docker-agent'
-    }
+//     agent {
+//         label 'docker-agent'
+//     }
+    agent any
 
     parameters{
         choice(name: 'ENV', choices: ['dev','qa'], description: '')
